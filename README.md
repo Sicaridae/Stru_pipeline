@@ -67,3 +67,7 @@ Since we are analyzing a channel protein, part of its internal volume is empty. 
 
 I chose this method instead of the radius of gyration because the radius of gyration approximates the structure as a sphere. This sphere can have a diameter related to the 
 width or height of the protein in a selected region, leading to a much rougher approximation of the protein volume.
+
+## Note on the `tabs` directory
+
+The `tabs` directory contains the non-rounded values of the parameters requested in the exam assignment, and is intended as supplementary material for the project report.
