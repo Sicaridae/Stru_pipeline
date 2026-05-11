@@ -1,0 +1,6 @@
+name: stru_env
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+prefix: /home/pesce/miniconda3/envs/stru_env
