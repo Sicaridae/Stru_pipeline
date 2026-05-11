@@ -135,12 +135,12 @@ bash
 
 #### PYTHON (3.10.0)
 
-# standard library modules used
+#### standard library modules used
 `os`
 `sys`
 `argparse`
 
-# External Python packages required
+#### External Python packages required
 `numpy`
 `pandas`
 `matplotlib`
