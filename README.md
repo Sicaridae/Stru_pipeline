@@ -69,7 +69,7 @@ I chose this method instead of the radius of gyration because the radius of gyra
 width or height of the protein in a selected region, leading to a much rougher approximation of the protein volume.
 
 ### 3. Working Folder Structure
-
+```text
 /home/pesce/bio_strutturale/pipe_line/
 
 ├── charmm_steps/
@@ -115,8 +115,7 @@ width or height of the protein in a selected region, leading to a much rougher a
 │           └── Output files generated from NVT trajectory analysis
 │
 └── wrapper.sh
-
-
+```
 
 ### Note on the `tabs` directory
 
@@ -131,22 +130,22 @@ The molecular dynamics simulations were performed using **GROMACS 2023.5**.
 On the cluster, GROMACS is loaded through environment modules:
 
 bash
-`module load molecular-dynamics
-module load gromacs/2023.5`
+`module load molecular-dynamics`
+`module load gromacs/2023.5`
 
 #### PYTHON (3.10.0)
 
 # standard library modules used
-`os
-sys
-argparse`
+`os`
+`sys`
+`argparse`
 
 # External Python packages required
-`numpy
-pandas
-matplotlib
-scipy
-MDAnalysis`
+`numpy`
+`pandas`
+`matplotlib`
+`scipy`
+`MDAnalysis`
 
 
 
