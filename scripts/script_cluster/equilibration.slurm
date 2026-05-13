@@ -69,15 +69,29 @@ NPT_INPUT_DIR="/home/pesce/bio_strutturale/pipe_line/output/buffer/npt_input"
 NVT_INPUT_DIR="/home/pesce/bio_strutturale/pipe_line/output/buffer/nvt_input"
 
 mkdir -p "$NPT_INPUT_DIR" "$NVT_INPUT_DIR"
-###check of pressure and temperature on npt_3ns.mdp"
+### check of pressure and temperature on npt_3ns.mdp and nvt_3ns.mdp, if they are not set to
+### 310 K and 1 atm, set them to these values, and make a backup of the original files before 
+### modifying them, in case the user want to check the original files or restore them"
 cp "$GROMACS_DIR/npt_3ns.mdp" "$GROMACS_DIR/npt_3ns.mdp.bak"
+cp "$GROMACS_DIR/nvt_3ns.mdp" "$GROMACS_DIR/nvt_3ns.mdp.bak"
 echo "checking and setting ref_t and ref_p in npt_3ns.mdp"
 grep "^ref_t" "$GROMACS_DIR/npt_3ns.mdp" || true ### the || true is to avoid the error message in case the parameter is not found, but in this case i 
 grep "^ref_p" "$GROMACS_DIR/npt_3ns.mdp" || true ### t should be there because it's a copy of the original file, but just in case, if the parameter is not found, it will be added with the correct value
+
 echo "Setting ref_t and ref_p in npt_3ns.mdp to 310 K and 1 atm"
+
 sed -i -E 's/^ref_t\s*=.*/ref_t                   = 310 310 310/' "$GROMACS_DIR/npt_3ns.mdp"
 sed -i -E 's/^ref_p\s*=.*/ref_p                   = 1.0     1.0/' "$GROMACS_DIR/npt_3ns.mdp"
+
 echo "Backup file: $GROMACS_DIR/npt_3ns.mdp.bak"
+
+grep "^ref_t" "$GROMACS_DIR/nvt_3ns.mdp" || true
+grep "^pcoupl" "$GROMACS_DIR/nvt_3ns.mdp" || true
+
+sed -i -E 's/^ref_t\s*=.*/ref_t                   = 310 310 310/' "$GROMACS_DIR/nvt_3ns.mdp"
+sed -i -E 's/^pcoupl\s*=.*/pcoupl                  = no/' "$GROMACS_DIR/nvt_3ns.mdp"
+
+echo "Backup file: $GROMACS_DIR/nvt_3ns.mdp.bak"
 ### move all the files needed for the NPT and NVT simulations to the respective input directories
 cp step6.6_equilibration.gro "$NPT_INPUT_DIR/"
 cp step6.6_equilibration.cpt "$NPT_INPUT_DIR/"
