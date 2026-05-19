@@ -65,8 +65,9 @@ In this case, the given set of points is represented by the coordinates of the o
 
 Since we are analyzing a channel protein, part of its internal volume is empty. However, the convex hull still represents a reasonable approximation of the protein volume.
 
-I chose this method instead of the radius of gyration because the radius of gyration approximates the structure as a sphere. This sphere can have a diameter related to the 
-width or height of the protein in a selected region, leading to a much rougher approximation of the protein volume.
+The convex-hull volume was preferred over a volume estimate derived from the radius of gyration because `Rg` mainly describes the overall compactness of the structure and can 
+only be converted into a volume by assuming an idealized spherical geometry. In contrast, the convex hull uses the atomic coordinates directly and provides a more 
+geometry-based estimate of the spatial extent of the selected protein region, although it may overestimate the true molecular volume by filling concavities and internal voids.
 
 ### 3. Working Folder Structure
 ```text
